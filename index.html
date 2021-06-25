@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!-- Header !-->
+	<head>
+		<title>Christopher J. Tralie, Ph.D.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="../../assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../../assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/css/ie8.css" /><![endif]-->
+        <style>
+        .image_off, #home:hover .image_on{
+           display:none
+        }
+        .image_on, #home:hover .image_off{
+           display:block
+        }
+        </style>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../../index.html" class="logo"><strong>Christopher J. Tralie, Ph.D.</strong></a>
+								</header>
+<!-- End Header !-->
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Topological Eulerian Synthesis of Slow Motion Periodic Videos</h1>
+										<h2><a href = "http://www.ctralie.com">Christopher Tralie</a>, <a href = "https://matthewberger.github.io/">Matthew Berger</a></h2>
+										<img src = "BlockDiagram.svg" width = 100%>
+                                    </header>
+                                    
+                                    <BR><HR>
+                                    <h2>Code</h2>
+                                    <a href = "https://github.com/ctralie/SloMoLoops">https://github.com/ctralie/SloMoLoops</a>
+              
+                                    <BR><HR>
+                                    <h2><a href = "paper.pdf">Paper</a></h2>
+                                    
+                                    <a href = "paper.pdf">Click here</a> to view the paper associated with this work
+                                    
+                                    <BR><HR>
+                                    <h2>Abstract</h2>
+                                    We consider the problem of taking a video that is comprised of multiple periods of repetitive motion, and reordering the frames of the video into a single period, producing a detailed, single cycle video of motion. This problem is challenging, as such videos often contain noise, drift due to camera motion and from cycle to cycle, and irrelevant background motion/occlusions, and these factors can confound the relevant periodic motion we seek in the video. To address these issues in a simple and efficient manner, we introduce a tracking free Eulerian approach for synthesizing a single cycle of motion. Our approach is geometric: we treat each frame as a point in high-dimensional Euclidean space, and analyze the sliding window embedding formed by this sequence of points, which yields samples along a topological loop regardless of the type of periodic motion.  We combine tools from topological data analysis and spectral geometric analysis to estimate the phase of each window, and we exploit the sliding window structure to robustly reorder frames.  We show quantitative results that highlight the robustness of our technique to camera shake, noise, and occlusions, and qualitative results of single-cycle motion synthesis across a variety of scenarios.
+                                    
+                                    <BR><HR>
+                                    <h2>Supplementary Videos</h2>
+                                    
+                                    This supplementary data contains an original set of videos and a corresponding set of "slow motion" videos that are the output of our pipeline.  We also show the 3 synthesized ground truth videos we use in our quantitative analysis of circular coordinates, which have each been corrupted by a different type of noise (camera shake, Gaussian, occlusion).
+                                    <HR>
+
+                                    <h3>Jumping Jacks Example</h3>
+                                     A video of two men doing jumping jacks (creative commons, obtained from <a href = "https://www.youtube.com/watch?v=sHRw7yIgNKE">https://www.youtube.com/watch?v=sHRw7yIgNKE</a>), with a square taking a random walk and occluding the video frames<BR><BR>
+                                    
+                                    (<a href = "JumpingJacks_Occlusions.avi">JumpingJacks_Occlusions.avi</a>)<BR>
+                                    <img src = "JumpingJacks_Occlusions.gif">
+                                    
+                                    <BR><BR>
+                                    Below is a slow motion template obtained by simply reordering the first frames of each window by the circular coordinates
+                                    
+                                    <BR><BR>
+                                    (<a href = "JumpingJacks_Occlusions_SimpleReordered.avi">JumpingJacks_Occlusions_SimpleReordered.avi</a>)<BR>
+                                    <img src = "JumpingJacks_Occlusions-reordered-0-simple-weighted-img-0.gif">
+                                    
+                                    <BR><BR>
+                                    Below is a much cleaner slow motion template of the above video obtained via median reordering with our code<BR>
+                                    <a href = "JumpingJacks_Occlusions_MedianReordered.avi">JumpingJacks_Occlusions_MedianReordered.avi</a><BR>
+                                    <img src = "JumpingJacks_Occlusions-reordered-0-median-weighted-img-0.gif">
+                                    
+                                    <BR><BR>
+                                    Below is a figure outputted from our code with more information about persistent homology and Laplacian circular coordinates for this example:<BR><BR>
+                                    <img src = "JumpingJacks_Occlusions-reordered-0-simple-weighted-img-0_CircCoords.svg" width = 100%>
+                                    
+                                    
+                                    <BR><BR><HR>
+                                    <h3>Fan Example</h3>
+                                    
+                                    A video of a fan spinning quickly, creative commons, obtained from <a href = "https://www.youtube.com/watch?v=ror_LhUh8kY">https://www.youtube.com/watch?v=ror_LhUh8kY</a> <BR><BR>
+                                    
+                                    (<a href = "Fan_Original.avi">Fan_Original.avi</a>)<BR>
+                                    <video controls>
+                                      <source src='Fan_Original.ogg' type="video/ogg">
+                                      <source src='Fan_Original.webm' type="video/webm">
+                                    Your browser does not support the video tag.
+                                    </video>
+
+                                    
+                                    <BR><BR>
+                                    
+                                    Below is a clean slow motion template using an "F" of 4 (<a href = "Fan_MedianReordered_Close4.avi">Fan_MedianReordered_Close4.avi</a>)<BR><BR>
+                                    <img src = "Fan_MedianReordered_Close4.gif">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <BR><BR><HR>
+                                    <h3>Periodic Exercise Example</h3>
+                                    Below is a video of a man doing rows with a kettle ball (obtained from reference [37])
+                                    <BR>
+                                    (<a href = "Exercise_Original.mp4">Exercise_Original.mp4</a>)<BR>
+                                    <img src = "Exercise_Original.gif"><BR><BR>
+                                    
+                                    Below is a slow motion template of the above video obtained from our code
+                                    <BR>
+                                    (<a href = "Exercise_MedianReordered.avi">Exercise_MedianReordered.avi</a>)<BR>
+                                    <img src = "Exercise_MedianReordered.gif"><BR><BR>
+                                    
+                                    
+
+                                    
+                                    <BR><BR><HR>
+                                    <h3>Magnified beating heart example</h3>
+                                    Below is a video from the phase-based Eulerian video amplification paper of a man's neck beating with his heart (obtained from reference [4])<BR><BR>
+                                    
+                                    (<a href = "ThroatMagnified_Original.avi">ThroatMagnified_Original.avi</a>)<BR>
+                                    <video controls>
+                                      <source src='ThroatMagnified_Original.ogg' type="video/ogg">
+                                      <source src='ThroatMagnified_Original.webm' type="video/webm">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                    <BR><BR>
+                                    
+                                    Below is a slow motion template of the above video obtained from our code.  We had to speed the video up for changes to be perceptible since the period involves so little motion
+                                    <BR>
+                                    (<a href = "ThroatMagnified_MedianReordered.avi_80FPS.avi">ThroatMagnified_MedianReordered.avi_80FPS.avi</a>)<BR>
+                                    <video controls>
+                                      <source src='ThroatMagnified_MedianReordered.avi_80FPS.ogg' type="video/ogg">
+                                      <source src='ThroatMagnified_MedianReordered.avi_80FPS.webm' type="video/webm">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                    <BR><BR>
+                                    
+
+                                      <!--
+                                    <BR><BR><HR>
+                                      <h3><a name = "ginzburg">Dynamical Systems Example</a></h3>
+                                      Below is a video of a the real part of a section of "spiral periodic <a href = "https://en.wikipedia.org/wiki/Attractor">attractor</a>" in the solution of a 2D <a href = "https://en.wikipedia.org/wiki/Ginzburg%E2%80%93Landau_theory">complex Ginzburg Landau equation</a>
+                                      <BR>
+                                      (<a href = "CGLE2D.mp4">CGLE2D.mp4</a>)<BR>
+                                      <img src = "CGLE2D.gif"><BR><BR>
+                                      
+                                      Below is the result of simply re-ordering the frames
+                                      (<a href = "CGLE2D-reordered-0-simple-unweighted-img-0.avi">CGLE2D-reordered-0-simple-unweighted-img-0.avi</a>)<BR>
+                                        <img src = "CGLE2D-reordered-0-simple-unweighted-img-0.gif"><BR><BR>
+
+                                      And below is the result of median reordering
+                                          (<a href = "CGLE2D-reordered-0-median-unweighted-img-0.avi">CGLE2D-reordered-0-simple-unweighted-img-0.avi</a>)<BR>
+                                            <img src = "CGLE2D-reordered-0-median-unweighted-img-0.gif"><BR><BR>
+                                    -->
+
+                                    
+                                    <BR><BR><HR>
+                                    <h3>Synthetic Examples</h3>
+                                    We generated these examples to quantitatively test our circular coordinates, since they are perfectly periodic and we have ground truth circular coordinates to go along with them.
+                                    
+                                    <BR><BR>
+                                    Below is our "simple periodic" video with occlusion type noise with a 50x50 box<BR><BR>
+                                    
+                                    (<a href = "GroundTruth_Simple_OcclusionSquare50.avi">GroundTruth_Simple_OcclusionSquare50.avi</a>)<BR>
+                                    <video controls>
+                                      <source src='GroundTruth_Simple_OcclusionSquare50.ogg' type="video/ogg">
+                                      <source src='GroundTruth_Simple_OcclusionSquare50.webm' type="video/webm">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                    
+                                    <BR><BR>
+                                    Below is our "harmonic periodic" video with shake type noise which is 20x20 pixels in magnitude<BR><BR>
+                                    
+                                    (<a href = "GroundTruth_Harmonic_Shake20x20.avi">GroundTruth_Harmonic_Shake20x20.avi</a>)<BR>
+                                    <video controls>
+                                      <source src='GroundTruth_Harmonic_Shake20x20.ogg' type="video/ogg">
+                                      <source src='GroundTruth_Harmonic_Shake20x20.webm' type="video/webm">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                    
+
+<BR><BR>
+                                    Below is a video of the "crowd periodic" video with per pixel IID Gaussian noise with sigma 0.5
+                                    (<a href = "GroundTruth_Crowd_Noise0.5.avi">GroundTruth_Crowd_Noise0.5.avi</a>)<BR>
+                                    <video controls>
+                                      <source src='GroundTruth_Crowd_Noise0.5.ogg' type="video/ogg">
+                                      <source src='GroundTruth_Crowd_Noise0.5.webm' type="video/webm">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                    
+                                    
+                                </section>
+                              </div>
+                            </div>
+
+<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="../../index.html">Homepage</a></li>
+										<li><a href = "../../ctralie_cv.pdf">CV</a></li>
+										<li>
+											<span class="opener">Research</span>
+											<ul>
+												<li><a href="../../Research/index.html">Projects</a></li>
+												<li><a href = "../../Research/ctralie_dissertation.pdf">Dissertation</a></li>
+											</ul>
+										</li>
+										<li><a href="../../Software">Software</a></li>
+										<li><a href = "../../Teaching/index.html">Teaching</a></li>
+										<li>
+											<span class="opener">Archives</span>
+											<ul>
+												<li><a href="../../Teaching/Tutorials.html">Tutorials</a></li>
+												<li><a href="../../Coursework/index.html">Graduate Classes</a></li>
+												<li><a href="../../PrincetonUGRAD">Princeton Undergraduate Portfolio</a></li>
+											</ul>
+										</li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<div class="mini-posts">
+									
+									
+									 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+									<a class="twitter-timeline" data-width="314" data-height="350" data-link-color="#f56a6a" data-chrome="transparent" data-dnt="true" href="https://twitter.com/ctralie/timelines/1012673261124145153?ref_src=twsrc%5Etfw">Tweets by ctralie</a>
+									
+                                    </div>
+								</section>
+
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Christopher J. Tralie. All rights reserved.  Contact chris.tralie@gmail.com. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+			
+            <!-- Start of StatCounter Code -->
+            <script type="text/javascript">
+            var sc_project=7309088; 
+            var sc_invisible=1; 
+            var sc_security="f655b56d"; 
+            </script>
+            <script type="text/javascript"
+            src="http://www.statcounter.com/counter/counter.js"></script>
+            <noscript><div class="statcounter"><a title="free hit counter"
+            href="http://statcounter.com/" target="_blank"><img class="statcounter"
+            src="http://c.statcounter.com/7309088/0/f655b56d/1/" alt="free hit
+            counter"></a></div></noscript>
+            <!-- End of StatCounter Code -->
+<!-- End Sidebar !-->
+
+<!-- Scripts -->
+			<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../../assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../../assets/js/main.js"></script>
+<!-- End Scripts -->
+	</body>
+</html>
